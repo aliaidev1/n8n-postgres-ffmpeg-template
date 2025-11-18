@@ -1,0 +1,19 @@
+{
+  "id": "n8n-postgres-ffmpeg-template",
+  "name": "n8n + Postgres + FFmpeg",
+  "version": "1.0.0",
+  "description": "Dokploy template for running n8n with a Postgres backend and FFmpeg-enabled runtime.",
+  "logo": "blueprints/n8n-postgres-ffmpeg/logo.svg",
+  "links": {
+    "github": "https://github.com/YOUR-USERNAME/n8n-postgres-ffmpeg-template",
+    "website": "https://n8n.io",
+    "docs": "https://docs.n8n.io"
+  },
+  "tags": [
+    "n8n",
+    "postgres",
+    "ffmpeg",
+    "automation",
+    "dokploy"
+  ]
+}

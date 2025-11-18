@@ -1,0 +1,24 @@
+[variables]
+domain = { type = "string", default = "n8n.example.com", description = "Primary domain where n8n will be exposed." }
+password = { type = "password", default = "${password:32}", description = "Password used for the Postgres user and n8n encryption." }
+host = { type = "string", default = "${domain}", description = "Host Dokploy should route to the n8n service." }
+port = { type = "number", default = 5678, description = "Internal port used by the n8n container." }
+
+[config]
+domains = [
+  { serviceName = "n8n", port = "5678", host = "${host}", path = "/" }
+]
+
+[config.env]
+POSTGRES_USER = "n8n"
+POSTGRES_PASSWORD = "${password}"
+POSTGRES_DB = "n8n"
+N8N_ENCRYPTION_KEY = "${password:64}"
+N8N_HOST = "${host}"
+GENERIC_TIMEZONE = "UTC"
+N8N_PORT = "${port}"
+
+[[config.mounts]]
+serviceName = "n8n"
+source = "n8n_data"
+target = "/home/node/.n8n"
