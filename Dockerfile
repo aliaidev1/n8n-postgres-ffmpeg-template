@@ -1,17 +1,11 @@
+# Use the official n8n image as the base
 FROM n8nio/n8n:latest
 
+# Switch to root user to install packages
 USER root
 
-# Install FFmpeg for Alpine
-RUN apk update && \
-    apk add --no-cache ffmpeg
+# Install ffmpeg (n8n uses Alpine Linux, so we use apk)
+RUN apk add --update --no-cache ffmpeg
 
-# Optional: set working directory if needed, else use default
-WORKDIR /home/node
-
-# Use custom entrypoint if you have logic; else you may skip this and use default
-COPY ./entrypoint.sh /entrypoint.sh
-RUN chmod +x /entrypoint.sh
-
-ENTRYPOINT ["/entrypoint.sh"]
-CMD ["n8n"]
+# Switch back to the node user for security (standard n8n user)
+USER node
