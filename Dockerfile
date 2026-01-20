@@ -1,13 +1,11 @@
-# Use the official n8n image as the base
+FROM alpine:latest AS alpine
+
 FROM n8nio/n8n:2.3.4
 
-# Switch to root user to install packages
+# Copy apk and its deps from Alpine (because n8n image is hardened)
+COPY --from=alpine /sbin/apk /sbin/apk
+COPY --from=alpine /usr/lib/libapk.so* /usr/lib/
+
 USER root
-
-# Install ffmpeg (Debian-based image, so we use apt)
-RUN apt-get update \
-  && apt-get install -y --no-install-recommends ffmpeg \
-  && rm -rf /var/lib/apt/lists/*
-
-# Switch back to the node user for security
+RUN apk add --no-cache ffmpeg
 USER node
