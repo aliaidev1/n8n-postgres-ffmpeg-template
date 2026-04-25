@@ -17,6 +17,7 @@ N8N_ENCRYPTION_KEY = "${password:64}"
 N8N_HOST = "${host}"
 GENERIC_TIMEZONE = "UTC"
 N8N_PORT = "${port}"
+WEBHOOK_URL = "https://${host}/"
 
 [[config.mounts]]
 serviceName = "n8n"

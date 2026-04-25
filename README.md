@@ -18,5 +18,14 @@ This repository provides a fully structured Dokploy blueprint that deploys the a
 4. **Install through Dokploy** by selecting "Import Repository" and pointing to your fork. Dokploy reads `template.toml`, provisions the stack, and exposes n8n on the domain you set.
 5. **Operate n8n** by logging in via the configured domain and start building workflows that leverage FFmpeg and Postgres-backed data.
 
+## Required environment variables
+If you run this repository directly with `docker compose` (outside Dokploy template injection), set these values in your environment or `.env` file:
+
+- `POSTGRES_USER` (default fallback in compose: `n8n`)
+- `POSTGRES_PASSWORD` (default fallback in compose: `n8n_change_me`; change this in production)
+- `POSTGRES_DB` (default fallback in compose: `n8n`)
+- `N8N_ENCRYPTION_KEY` (default fallback exists only to avoid startup failure; set your own strong key in production)
+- `N8N_HOST` and `WEBHOOK_URL` for your public domain
+
 ## License
 Released under the [MIT License](LICENSE). You are free to adapt and redistribute this template.
