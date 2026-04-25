@@ -34,6 +34,7 @@ services:
       WEBHOOK_URL: https://${N8N_HOST}/
       GENERIC_TIMEZONE: ${GENERIC_TIMEZONE:-UTC}
       N8N_SECURE_COOKIE: "false"
+      N8N_PUSH_BACKEND: sse
     volumes:
       - n8n_data:/home/node/.n8n
     depends_on:
