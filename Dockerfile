@@ -1,6 +1,6 @@
 FROM alpine:latest AS alpine
 
-FROM n8nio/n8n:2.13.3
+FROM n8nio/n8n:2.18.4
 
 # Copy apk and its deps from Alpine (because n8n image is hardened)
 COPY --from=alpine /sbin/apk /sbin/apk
